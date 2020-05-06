@@ -1,5 +1,5 @@
 {
-  "name": "homework-13-burger-app",
+  "name": "burger-app",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -7,19 +7,14 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/julzar/homework-13-burger-app.git"
-  },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/julzar/homework-13-burger-app/issues"
-  },
-  "homepage": "https://github.com/julzar/homework-13-burger-app#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "express-handlebars": "^4.0.4"
+    "express-handlebars": "^4.0.4",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.7",
+    "sequelize-cli": "^5.5.1"
   }
 }

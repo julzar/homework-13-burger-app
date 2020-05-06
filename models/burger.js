@@ -1,20 +1,17 @@
-const Sequelize = require('sequelize');
-const sequelize = require('../config/connection.js');
-
-const burger = sequelize.define('burger', {
-  name: {
-    type: Sequelize.STRING,
-    required: true
-  },
-  devoured: {
-    type: Sequelize.BOOLEAN,
-    required: true
-  }
-}, 
-{
-  freezeTableName: true
-});
-
-burger.sync();
-
-module.exports = burger;
+module.exports = (sequelize, DataTypes) => {
+    const Burgers = sequelize.define('Burger', {
+        burger: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          validate: {
+            len: [1]
+          }
+        },
+        devoured: {
+          type: DataTypes.BOOLEAN,
+          allowNull: false,
+          defaultValue: false
+        }
+      });
+      return Burgers;
+};

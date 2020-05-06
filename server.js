@@ -1,10 +1,13 @@
+// Dependencies
 const express = require('express');
-const exphbs = require('express-handlebars');
 
+// Sets up the Express App
 const app = express();
 const PORT = process.env.PORT || 8080;
 
-// Set Handlebars as the default templating engine.
+// Set Handlebars.
+const exphbs = require('express-handlebars');
+
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
@@ -13,11 +16,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // Static directory
-app.use(express.static("public"));
+app.use(express.static('public'));
 
-// Controllers (route handling)
-require('./controllers/burgers_controller')(app);
+// Controller
+require('./controller/burger.js')(app);
 
-app.listen(PORT, function() {
-  console.log(`App listening on PORT ${port}`);
-})
+// Requiring our models for syncing
+const db = require('./models');
+
+// Start app
+(async () => {
+    try {
+        await db.sequelize.sync({force: true});
+        app.listen(PORT, () => {
+            console.log(`App listening on port ${PORT}`);
+        });
+    }
+    catch (err) {
+        throw err;
+    };
+})();

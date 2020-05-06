@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <h1>Eat Da Burger!</h1>
+    </div>
+    <div class="row d-flex justify-content-center">
+        <img src="/img/burger.png" alt="Burger drawing">
+    </div>
+    <div class="row d-flex justify-content-center mb-1">
+        <input id="new-burger" placeholder="Add a burger"><button id="create-btn">Cook It!</button>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="row d-flex justify-content-center">
+                <h3>Fresh off the grill:</h3>
+            </div>
+            <div class="row">
+                <ul>
+                {{#each burgers}}
+                    {{#unless devoured}}
+                        {{>burger}}
+                    {{/unless}}
+                {{/each}}
+                </ul>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row d-flex justify-content-center">
+                <h3>Devoured:</h3>
+            </div>
+            <div class="row d-flex justify-content-end">
+                <ul>
+                {{#each burgers}}
+                    {{#if devoured}}
+                        {{>burger}}
+                    {{/if}}
+                {{/each}}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
